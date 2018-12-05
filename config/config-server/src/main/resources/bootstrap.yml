@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: CONFIG-SERVER-9001
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/1369012879/spring-cloud-demo-1.x/
+          search-paths: config-repo
+          username: username
+          password: password
+    label: master
+
+server:
+  port: 9001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:9000/eureka/
+
+security:
+  user:
+    name: root
+    password: root
