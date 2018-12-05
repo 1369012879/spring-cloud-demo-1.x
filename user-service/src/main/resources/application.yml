@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: USER-SERVICE-9003
+
+server:
+  port: 9003
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:9000/eureka/
+
+security:
+  user:
+    name: root
+    password: root
