@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ORDER-SERVICE-ZUUL-9008
+
+server:
+  port: 9008
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:9000/eureka/
+
+security:
+  user:
+    name: root
+    password: root
+
+zuul:
+  routes:
+    api-user:
+      path: /api-order/**
+      #serviceId: ORDER-SERVICE-FEIGN-9007
+      serviceId: ORDER-SERVICE-RIBBON-9007
