@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: EUREKA-SERVER-9000
+
+server:
+  port: 9000
+
+eureka:
+  instance:
+    hostname: localhost
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 4000
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+    healthcheck:
+      enabled: true
+
+security:
+  user:
+    name: root
+    password: root
