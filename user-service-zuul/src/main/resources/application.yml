@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: USER-SERVICE-ZUUL-9005
+
+server:
+  port: 9005
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:9000/eureka/
+
+security:
+  user:
+    name: root
+    password: root
+
+zuul:
+  routes:
+    api-user:
+      path: /api-user/**
+      #serviceId: USER-SERVICE-FEIGN-9004
+      serviceId: USER-SERVICE-RIBBON-9004
