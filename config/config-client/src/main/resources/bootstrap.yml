@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: CONFIG-CLIENT-9002
+  cloud:
+    config:
+      label: master
+      profile: dev
+      # 方法一：服务注册与发现中心
+      discovery:
+        service-id: CONFIG-SERVER-9001
+        enabled: true
+      # 方法二：请求URL
+      #uri: http://localhost:9001/
+
+server:
+  port: 9002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:9000/eureka/
+
+security:
+  user:
+    name: root
+    password: root
